@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  	  layout:decorator="appsecLayout">
+  	  
+<body>
+<th:block layout:fragment="content">
+
+   	<form class="form-horizontal" id="saveUserForm" th:action="@{/users}" th:method="POST" role="form" th:object="${appsecUser}"> 
+   	
+	<div class="form-group">
+         <label for="userId" class="col-sm-2 control-label">User Id</label>
+         <div class="col-sm-9">
+             <input type="text" th:field="*{userId}" placeholder="User Id" class="form-control" autofocus="true" />
+             <label th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">User Name Error</label>            
+          </div>
+     </div>
+     <div class="form-group">
+         <label for="firstName" class="col-sm-2 control-label">First Name</label>
+         <div class="col-sm-9">
+             <input type="text" th:field="*{firstName}" placeholder="First Name" class="form-control" autofocus="true" />
+             <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</label>
+         </div>
+     </div>
+     <div class="form-group">
+         <label for="firstName" class="col-sm-2 control-label">First Name</label>
+         <div class="col-sm-9">
+             <input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control" autofocus="true" />
+             <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</label>
+          </div>
+     </div>
+     <div class="form-group">
+         <label for="firstName" class="col-sm-2 control-label">City</label>
+         <div class="col-sm-9">
+             <input type="text" th:field="*{city}" placeholder="City" class="form-control" autofocus="true" />
+             <label th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City Error</label>
+         </div>
+     </div>
+     <div class="form-group">
+         <label for="zipCode" class="col-sm-2 control-label">Zip Code</label>
+         <div class="col-sm-9">
+             <input type="text" th:field="*{zipCode}" placeholder="Zip Code" class="form-control" autofocus="true" />
+             <label th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}">Zip Code Error</label>
+         </div>
+     </div>
+     <div class="form-group">
+         <label for="firstName" class="col-sm-2 control-label">Balance</label>
+         <div class="col-sm-9">
+             <input type="text" th:field="*{balanceAmount}" placeholder="Balance Amount" class="form-control" autofocus="true" />
+             <label style="font-weight: bold; font-size: 25; color: #FF0000;" th:if="${#fields.hasErrors('balanceAmount')}" th:errors="*{balanceAmount}">Balance Error</label>
+         </div>
+     </div>
+     <div class="form-group">
+          <div class="col-sm-9 col-sm-offset-2">
+              <input type="submit" class="btn btn-primary btn-block" th:value="${submitValue}" />
+          </div>
+      </div>
+      <div class="form-group">
+          <div class="col-sm-9 col-sm-offset-2">
+              <span th:if="${successMessage} !=null" style="font-weight: bold; font-size: 25; color: #b7a959;">
+				<p style="font-weight: bold; font-size: 25; color: #b7a959;" th:utext="${successMessage}"></p>
+				</span>
+          </div>
+      </div>
+   </form> 
+</th:block>
+</body>
+</html>

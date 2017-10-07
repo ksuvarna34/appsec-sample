@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  	  layout:decorator="appsecLayout">
+
+<body>
+<th:block layout:fragment="content">
+	<div class="form-group">
+            <label class="col-sm-2 control-label" style="font-weight: bold; font-size: 20; color: #FF1C19;" th:utext="${errorMsg}"
+              >Appsec Error</label>
+            
+         </div>
+</th:block>
+
+</body>
+
+</html>
