@@ -7,6 +7,7 @@ import org.jsoup.safety.Whitelist;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.util.HtmlUtils;
 /**
  * Sanitize all the input content to Controllers from XSS attacks cleaning up HTML and scripting.
  * @author ksuvarna34
@@ -25,7 +26,8 @@ public class ContentControllerAdvice {
 				setValue(null);
 			}
 			else {
-				setValue(Jsoup.clean(text, Whitelist.simpleText()));
+				String unescaped = Jsoup.clean(text, Whitelist.simpleText());
+				setValue(HtmlUtils.htmlEscape(unescaped));
 			}
 		}
 	}
